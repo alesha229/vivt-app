@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import {StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font'
 import AppLoading from 'expo-app-loading'
-import {Schedule} from './src/schedule'
+import {Schedule} from './src/screens/schedule'
+import {Login} from './src/screens/login'
 
 
 async function loadApp(){
@@ -25,7 +26,8 @@ export default function App() {
   else{
   return (
     <View style={styles.container}>
-      <Schedule />
+      {/* <Schedule /> */}
+      <Login/>
     </View>
   );
   }

@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
   text:{
     flexDirection:'row',
     flexWrap:'wrap',
-    width:210
+    width:'55%'
   },
   item:{
     width:'100%',
