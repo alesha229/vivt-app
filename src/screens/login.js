@@ -1,7 +1,48 @@
-import React from 'react';
-import { StyleSheet, TextInput, View, SafeAreaView,Text} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { StyleSheet, TouchableOpacity, Alert, TextInput, View, SafeAreaView,Text} from 'react-native';
+
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
+
 export const Login = () => {
+  var username = "mail"
+  var password = "pass"
+
+  const [isLoading, setLading] = useState(true);
+  const [data, setData] = useState([]);
+
+  function handleEmail(text){
+     username = text;
+  }
+  function handlePassword(text){
+     password = text;
+  }
+
+  var _json
+
+  useEffect(() => {
+    funcGetJson()
+  });
+
+  function funcGetJson() {
+    var authorizationURL = `http://192.168.0.102:8080/api/authorization?login=${username}&password=${password}`;
+    fetch(authorizationURL)
+      .then((response) => response.json())
+      .then((json) =>  (_json = json))
+      .catch((error) => alert(error))
+      .finally(setLading(false))
+      showJson()
+  }
+
+  function showJson() {
+    if (_json != null) {
+      Alert.alert("authorization true")
+    } else {
+      Alert.alert("json: " + _json)
+    }
+  }
+
+
+
   return (
     <View style={styles.container}>
       <Svg
@@ -43,6 +84,7 @@ export const Login = () => {
       <TextInput
         style={styles.input}
         placeholder="Email"
+        onChangeText={text => handleEmail(text)}
       />
       </View>
       <View style={styles.inputbox}>
@@ -63,11 +105,19 @@ export const Login = () => {
         style={styles.input}
         placeholder="Пароль"
         secureTextEntry={true}
+        onChangeText={text => handlePassword(text)}
       />
       </View>
     </SafeAreaView>
     <View><Text style={styles.lostpass}>Забыли пароль?</Text></View>
-    <View style={styles.login}><Text style={styles.logintext}>Войти</Text></View>
+
+      <TouchableOpacity
+        style={styles.login}
+        onPress={funcGetJson}>
+        <Text style={styles.logintext}>Войти</Text>
+      </TouchableOpacity>
+
+
     </View>
   );
 }
