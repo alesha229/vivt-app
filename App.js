@@ -4,7 +4,8 @@ import * as Font from 'expo-font'
 import AppLoading from 'expo-app-loading'
 import {Schedule} from './src/screens/schedule'
 import {Login} from './src/screens/login'
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 async function loadApp(){
   await Font.loadAsync({
@@ -13,8 +14,8 @@ async function loadApp(){
     'Montserrat-Regular':require('./fonts/Montserrat-Regular.ttf')
   })
 }
-
-export default function App() {
+const Stack = createStackNavigator();
+function App() {
   const [isReady, setIsReady] = useState(false)
   if(!isReady){
     return <AppLoading 
@@ -25,12 +26,22 @@ export default function App() {
   }
   else{
   return (
-    <View style={styles.container}>
-      {/* <Schedule /> */}
-      <Login/>
-    </View>
+    
+    <NavigationContainer >
+      
+      <Stack.Navigator
+       screenOptions={{
+        headerShown: false
+        
+      }}
+      >
+        <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Schedule" component={Schedule} />
+      </Stack.Navigator>
+    
+    </NavigationContainer>
   );
-  }
+}
 }
 
 const styles = StyleSheet.create({
@@ -42,3 +53,4 @@ const styles = StyleSheet.create({
     marginRight:21
   },
 });
+export default App;

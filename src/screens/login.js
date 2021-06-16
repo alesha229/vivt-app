@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, TextInput, View, SafeAreaView,Text} from 'react-native';
+import { StyleSheet, TextInput, View, SafeAreaView,Text, Button} from 'react-native';
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
-export const Login = () => {
+export const Login = ({navigation}) => {
   return (
+    <View style={styles.containerr}>
     <View style={styles.container}>
       <Svg
       xmlns="http://www.w3.org/2000/svg"
@@ -67,15 +68,22 @@ export const Login = () => {
       </View>
     </SafeAreaView>
     <View><Text style={styles.lostpass}>Забыли пароль?</Text></View>
-    <View style={styles.login}><Text style={styles.logintext}>Войти</Text></View>
+    <View style={styles.login}><Text style={styles.logintext}  onPress={() => navigation.navigate('Schedule')}>Войти</Text></View>
+    </View>
     </View>
   );
 }
 const styles = StyleSheet.create({
+  containerr: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+  },
   container:{
    marginLeft:20,
    marginRight:20,
    justifyContent:'center',
+   backgroundColor: '#fff',
   },
   logo:{
     marginTop:92,

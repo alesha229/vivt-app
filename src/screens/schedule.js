@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, } from 'react-native';
 import Svg, { Path } from "react-native-svg"
 export const Schedule = () => {
   return (
+    <View style={styles.container}>
     <View style={styles.table}>
       <View style={styles.Schedule}>
         <Svg
@@ -89,15 +90,23 @@ export const Schedule = () => {
         </View>
       </View>
     </View>
+    </View>
   );
 }
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+  },
   Schedule: {
     flexDirection: "row",
     marginTop: 118,
     justifyContent: 'space-between',
     backgroundColor: '#fff',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    marginLeft:21,
+    marginRight:21
   },
   arrow: {
     width: 12,
