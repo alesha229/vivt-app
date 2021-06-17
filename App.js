@@ -4,9 +4,10 @@ import * as Font from 'expo-font'
 import AppLoading from 'expo-app-loading'
 import {Schedule} from './src/screens/schedule'
 import {Login} from './src/screens/login'
+import {Nav} from './src/nav'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import { navigationRef } from './src/RootNavigation';
 async function loadApp(){
   await Font.loadAsync({
     'Montserrat-SemiBold':require('./fonts/Montserrat-SemiBold.ttf'),
@@ -26,8 +27,7 @@ function App() {
   }
   else{
   return (
-    
-    <NavigationContainer >
+    <NavigationContainer ref={navigationRef}>
       
       <Stack.Navigator
        screenOptions={{
@@ -38,8 +38,11 @@ function App() {
         <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Schedule" component={Schedule} />
       </Stack.Navigator>
-    
+      <View style={styles.menu}>
+        <Nav/>
+      </View>
     </NavigationContainer>
+  
   );
 }
 }
@@ -52,5 +55,8 @@ const styles = StyleSheet.create({
     marginLeft:21,
     marginRight:21
   },
+  menu:{
+    width:'100%',
+  }
 });
 export default App;

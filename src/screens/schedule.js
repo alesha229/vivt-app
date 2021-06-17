@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   text:{
     flexDirection:'row',
     flexWrap:'wrap',
-    width:'55%'
+    width:'68%'
   },
   item:{
     width:'100%',
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
   cabinet:{
     flexDirection:'row',
     flexWrap:'wrap',
-    width:'20%',
+    width:35,
     marginTop:32,
     textAlign:'right',
   },

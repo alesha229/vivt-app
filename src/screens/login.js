@@ -1,7 +1,9 @@
 import React from 'react';
-import { StyleSheet, TextInput, View, SafeAreaView,Text, Button} from 'react-native';
+import { StyleSheet, TextInput, View, SafeAreaView,Text, TouchableOpacity} from 'react-native';
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
+import {Nav} from '../nav'
 export const Login = ({navigation}) => {
+  
   return (
     <View style={styles.containerr}>
     <View style={styles.container}>
@@ -68,8 +70,9 @@ export const Login = ({navigation}) => {
       </View>
     </SafeAreaView>
     <View><Text style={styles.lostpass}>Забыли пароль?</Text></View>
-    <View style={styles.login}><Text style={styles.logintext}  onPress={() => navigation.navigate('Schedule')}>Войти</Text></View>
+    <TouchableOpacity style={styles.login}  onPress={() => navigation.navigate('Schedule')}><Text style={styles.logintext} >Войти</Text></TouchableOpacity>
     </View>
+    {/* <Nav></Nav> */}
     </View>
   );
 }
