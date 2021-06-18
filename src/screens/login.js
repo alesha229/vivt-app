@@ -3,7 +3,6 @@ import { StyleSheet, TextInput, View, SafeAreaView,Text, TouchableOpacity} from 
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
 import {Nav} from '../nav'
 export const Login = ({navigation}) => {
-  
   return (
     <View style={styles.containerr}>
     <View style={styles.container}>

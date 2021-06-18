@@ -5,6 +5,10 @@ import AppLoading from 'expo-app-loading'
 import {Schedule} from './src/screens/schedule'
 import {Login} from './src/screens/login'
 import {Nav} from './src/nav'
+import {News} from './src/screens/news'
+import {Brs} from './src/screens/brs'
+import {Messages} from './src/screens/messages'
+import {Profile} from './src/screens/profile'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { navigationRef } from './src/RootNavigation';
@@ -36,10 +40,14 @@ function App() {
       }}
       >
         <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="News" component={News} />
+      <Stack.Screen name="Brs" component={Brs} />
+      <Stack.Screen name="Messages" component={Messages} />
       <Stack.Screen name="Schedule" component={Schedule} />
+      <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
       <View style={styles.menu}>
-        <Nav/>
+        <Nav hidden={false}/>
       </View>
     </NavigationContainer>
   

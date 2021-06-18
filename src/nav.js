@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet, TextInput, View, SafeAreaView, Text, TouchableOpacity } from 'react-native';
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
 import * as RootNavigation from './RootNavigation.js';
-export const Nav = () => {
-   
+export const Nav = (props) => {
+
     return (
-        <View style={styles.container}>
+        <View style={props.hidden ? styles.hidden : styles.container}>
             <TouchableOpacity
-            onPress={() => RootNavigation.navigate('Login')}
-            style={styles.menuActive}>
+                onPress={() => RootNavigation.navigate('News')}
+                style={styles.menuActive}>
                 <Svg
                     style={styles.icon}
                     xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@ export const Nav = () => {
                 <Text style={styles.text}>Новости</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.menu}
-             onPress={() => RootNavigation.navigate('Schedule')}
+                onPress={() => RootNavigation.navigate('Schedule')}
             >
                 <Svg
                     style={styles.icon}
@@ -46,7 +46,9 @@ export const Nav = () => {
                 </Svg>
                 <Text style={styles.text}>Расписание</Text>
             </TouchableOpacity>
-            <View style={styles.menu}>
+            <TouchableOpacity
+                onPress={() => RootNavigation.navigate('Brs')}
+                style={styles.menu}>
                 <Svg
                     style={styles.icon}
                     xmlns="http://www.w3.org/2000/svg"
@@ -61,8 +63,10 @@ export const Nav = () => {
                     />
                 </Svg>
                 <Text style={styles.text}>БРС</Text>
-            </View>
-            <View style={styles.menu}>
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => RootNavigation.navigate('Messages')}
+                style={styles.menu}>
                 <Svg
                     style={styles.icon}
                     xmlns="http://www.w3.org/2000/svg"
@@ -77,8 +81,10 @@ export const Nav = () => {
                     />
                 </Svg>
                 <Text style={styles.text}>Сообщения</Text>
-            </View>
-            <View style={styles.menu}>
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => RootNavigation.navigate('Profile')}
+                style={styles.menu}>
                 <Svg
                     style={styles.icon}
                     xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +99,7 @@ export const Nav = () => {
                     />
                 </Svg>
                 <Text style={styles.text}>Профиль</Text>
-            </View>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -123,5 +129,8 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: 'center'
+    },
+    hidden:{
+        display:'none'
     }
 });
