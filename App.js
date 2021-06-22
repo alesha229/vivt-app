@@ -4,7 +4,7 @@ import * as Font from 'expo-font'
 import AppLoading from 'expo-app-loading'
 import {Schedule} from './src/screens/schedule'
 import {Login} from './src/screens/login'
-import {Nav} from './src/nav'
+import Nav from './src/nav'
 import {News} from './src/screens/news'
 import {Brs} from './src/screens/brs'
 import {Messages} from './src/screens/messages'
@@ -32,11 +32,9 @@ function App() {
   else{
   return (
     <NavigationContainer ref={navigationRef}>
-      
       <Stack.Navigator
        screenOptions={{
-        headerShown: false
-        
+        headerShown: false 
       }}
       >
         <Stack.Screen name="Login" component={Login} />

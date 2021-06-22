@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyleSheet, TextInput, View, SafeAreaView,Text, TouchableOpacity} from 'react-native';
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
-import {Nav} from '../nav'
+import {useNavigationState} from '@react-navigation/native';
+
 export const Login = ({navigation}) => {
+
   return (
     <View style={styles.containerr}>
     <View style={styles.container}>
