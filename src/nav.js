@@ -2,28 +2,31 @@ import React, { Component } from 'react'
 import { StyleSheet, TextInput, View, SafeAreaView, Text, TouchableOpacity } from 'react-native';
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
 import * as RootNavigation from './RootNavigation.js';
+export const navigationRef = React.createRef();
 
 export default class Nav extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            screen: 'login',
+            screen: 'Login',
         };
     }
+    listener=()=>{
+        navigationRef.current?.addListener('state', (e) => {
+           this.setState({screen: e.data.state.routes[e.data.state.routes.length - 1].name})
+        });
+      }
     componentDidMount() {
         setTimeout(() => {
-            RootNavigation.Listner()
-        }, 1000);
+            this.listener()
+          },500); 
     }
     render() {
         return (
-            <View style={this.props.hidden ? styles.hidden : styles.container}>
+            <View style={this.state.screen == 'Login' ? styles.hidden : styles.container}>
                 <TouchableOpacity
-                    onPress={() => { RootNavigation.navigate('News')
-                    setTimeout(() => {
-                        this.forceUpdate()
-                    }, 200); }}
-                    style={RootNavigation.stats() == 'News' ? styles.menuActive : styles.menu}>
+                    onPress={() => {navigationRef.current?.navigate('News')}}
+                    style={this.state.screen == 'News' ? styles.menuActive : styles.menu}>
                     <Svg
                         style={styles.icon}
                         xmlns="http://www.w3.org/2000/svg"
@@ -43,12 +46,8 @@ export default class Nav extends Component {
                     </Svg>
                     <Text style={styles.text}>Новости</Text>
                 </TouchableOpacity>
-                <TouchableOpacity  style={RootNavigation.stats() == 'Schedule' ? styles.menuActive : styles.menu}
-                    onPress={() => {RootNavigation.navigate('Schedule')
-                    setTimeout(() => {
-                        this.forceUpdate()
-                    }, 200); 
-                }}
+                <TouchableOpacity  style={this.state.screen== 'Schedule' ? styles.menuActive : styles.menu}
+                    onPress={() => {navigationRef.current?.navigate('Schedule')}}
                 >
                     <Svg
                         style={styles.icon}
@@ -66,12 +65,8 @@ export default class Nav extends Component {
                     <Text style={styles.text}>Расписание</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => {RootNavigation.navigate('Brs')
-                    setTimeout(() => {
-                        this.forceUpdate()
-                    }, 200); 
-                }}
-                    style={RootNavigation.stats() == 'Brs' ? styles.menuActive : styles.menu}>
+                    onPress={() => {navigationRef.current?.navigate('Brs')}}
+                    style={this.state.screen == 'Brs' ? styles.menuActive : styles.menu}>
                     <Svg
                         style={styles.icon}
                         xmlns="http://www.w3.org/2000/svg"
@@ -88,12 +83,8 @@ export default class Nav extends Component {
                     <Text style={styles.text}>БРС</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => {RootNavigation.navigate('Messages')
-                    setTimeout(() => {
-                        this.forceUpdate()
-                    }, 200); 
-                }}
-                    style={RootNavigation.stats() == 'Messages' ? styles.menuActive : styles.menu}>
+                    onPress={() => {navigationRef.current?.navigate('Messages')}}
+                    style={this.state.screen == 'Messages' ? styles.menuActive : styles.menu}>
                     <Svg
                         style={styles.icon}
                         xmlns="http://www.w3.org/2000/svg"
@@ -110,12 +101,8 @@ export default class Nav extends Component {
                     <Text style={styles.text}>Сообщения</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => {RootNavigation.navigate('Profile')
-                    setTimeout(() => {
-                        this.forceUpdate()
-                    }, 200); 
-                }}
-                    style={RootNavigation.stats() == 'Profile' ? styles.menuActive : styles.menu}>
+                    onPress={() => {navigationRef.current?.navigate('Profile')}}
+                    style={this.state.screen == 'Profile' ? styles.menuActive : styles.menu}>
                     <Svg
                         style={styles.icon}
                         xmlns="http://www.w3.org/2000/svg"
