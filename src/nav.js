@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, TextInput, View, SafeAreaView, Text, TouchableOpacity } from 'react-native';
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
-import * as RootNavigation from './RootNavigation.js';
 export const navigationRef = React.createRef();
 
 export default class Nav extends Component {
